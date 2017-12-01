@@ -1,0 +1,14 @@
+- name: Install elasticsearch
+  yum:
+    name: "https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{ ELASTICSEARCH_VERSION }}.rpm"
+    state: present
+- name: Copy elasticsearch config file
+  template:
+    src: elasticsearch.yml.j2
+    dest: /etc/elasticsearch/elasticsearch.yml
+  notify: restart elasticsearch
+- name: Start elasticsearch service
+  service:
+    name: elasticsearch
+    state: started
+    enabled: true
