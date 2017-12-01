@@ -1,4 +1,4 @@
-Role Name
+elasticsearch
 =========
 
 A simple role to install and configure elasticsearch.
